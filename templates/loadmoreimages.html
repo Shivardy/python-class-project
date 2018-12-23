@@ -1,0 +1,14 @@
+{%for image in images%}
+
+<div class="text-center grid-item">
+  <label>
+    <input type="radio" name="encryptImg" value="{{image[0]}}" />
+    <img
+      src="{{image[1]}}"
+      class="img-thumbnail "
+      style="max-height: 250px"
+      id="{{image[0]}}"
+    />
+  </label>
+</div>
+{%endfor%}

@@ -1,0 +1,62 @@
+{%extends 'layout.html'%} {%block body %}
+<script
+  type="text/javascript"
+  src="{{ url_for('static', filename='main.js') }}"
+></script>
+<div class="card text-white bg-dark" style="margin-top: 3%; margin-bottom: 7%;">
+  <div class="card-header">Encrypt Message</div>
+  <div class="card-body" id="cardbody">
+    <h6 class="card-title">Type Your Message Here:</h6>
+    <div class="form-group">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="The following text will be encrypted."
+        id="encryptMessage"
+        value="{{request.form.encryptMessage}}"
+      />
+    </div>
+
+    {% if images=="failed" %}
+    <div class="danger">
+      <strong>Error !</strong> Failed to Load Images, Try Again After Some Time
+    </div>
+    {%else%}
+    <h6 class="card-title">Select Image for Encryption:</h6>
+    <div class="grid-container" id="result">
+      {%for image in images%}
+
+      <div class="text-center grid-item">
+        <label>
+          <input type="radio" name="encryptImg" value="{{image[0]}}" />
+          <img
+            src="{{image[1]}}"
+            class="img-thumbnail "
+            style="max-height: 250px"
+          />
+        </label>
+      </div>
+      {%endfor%}
+    </div>
+
+    <p style="text-align: center">
+      <button type="button" onclick="loadimages()" class="btn btn-secondary">
+        More Images
+      </button>
+    </p>
+    <div class="alert alert-danger" id="error" style="display: none">
+      <strong>Danger!</strong> Please Enter a Message and Select an Image
+    </div>
+    <button
+      id="submitencryption"
+      onclick="startEncryption()"
+      class="btn btn-light btn-block"
+    >
+      Start Encryption
+    </button>
+    {% endif %}
+  </div>
+</div>
+<div style="height:10px;"></div>
+
+{%endblock%}

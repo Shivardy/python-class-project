@@ -1,0 +1,29 @@
+{%extends 'layout.html'%} {%block body %}
+
+<div class="card border-dark" style="margin-top:3%">
+  <div class="card-header">Decrypt Image</div>
+  <div class="card-body text-dark">
+    {% if message=="" %}
+    <div>
+      <h5 class="card-title">Choose Your Image</h5>
+      <form method="post" enctype="multipart/form-data">
+        <input type="file" name="file" required class="btn btn-light" /> <br />
+        <input type="submit" class="btn btn-dark"/
+        style="margin-left:12px;margin-top:5px;">
+      </form>
+    </div>
+    {%else%} {% if message=="error" %}
+    <div class="alert alert-danger" style="margin:2% auto;">
+      <strong>Error!</strong> Decryption Failed Try Another Image
+    </div>
+
+    {%else%}
+    <div>
+      <h5 class="card-title">Decrypted Message :-</h5>
+      <p>{{ message }}</p>
+    </div>
+    {% endif %} {% endif %}
+  </div>
+</div>
+
+{%endblock%}

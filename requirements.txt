@@ -10,7 +10,7 @@ configparser==3.5.0
 enum34==1.1.6
 Flask==1.0.2
 
-Jinja2==2.10
+Jinja2==2.11.3
 
 
 Pillow==5.3.0
